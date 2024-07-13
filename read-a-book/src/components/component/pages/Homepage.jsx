@@ -32,7 +32,7 @@ export default function Homepage() {
     }, [genre]);
 
     return (
-        <div className="container vh-100">
+        <div className="container">
             <div className="row py-5">
                 <div className="col-12 p-2">
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-around align-items-center gap-5 m-0 py-2">
