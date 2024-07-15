@@ -18,7 +18,7 @@ body {
 }
 
 .navbar {
-    box-shadow: 0px 8px 5px 0px rgba(60,48,40,0.3) !important;
+    box-shadow: 0px 8px 5px 0px rgba(60, 48, 40, 0.3) !important;
 }
 
 .navbar-brand__logo {
@@ -37,6 +37,30 @@ body {
 
 .nav-item {
     list-style: none;
+}
+
+.active-genre {
+    background-color: var(--brown) !important;
+    font-weight: bold !important;
+    color: var(--bg-color) !important;
+}
+
+.dropdown-menu {
+    overflow: hidden !important;
+}
+
+.dropdown-item {
+    transition: transform .2s;
+}
+
+.dropdown-item:active {
+    background-color: var(--brown) !important;
+}
+
+.dropdown-item:hover {
+    transform: scale(1.1);
+    background-color: #b66f398f !important;
+
 }
 
 .footer {
@@ -61,4 +85,16 @@ body {
     border-bottom: 1px solid var(--brown) !important;
 }
 
-@media screen {}
+.card {
+    width: 20rem !important;
+    border: 1px solid var(--brown) !important;
+}
+
+.card-header {
+    color: var(--bg-color) !important;
+    background-color: var(--brown) !important;
+}
+
+.list-group-item {
+    color: var(--text-color) !important;
+}

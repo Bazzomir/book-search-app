@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/image/logo.png';
 import logoIcon from '../../assets/image/logo-icon.png';
 import search from '../../assets/image/search.png';
 
 export default function Header() {
+
     const [genres, setGenres] = useState([]);
+    const location = useLocation();
 
     const getGenres = async () => {
         try {
@@ -48,14 +50,19 @@ export default function Header() {
                         <ul className="d-flex justify-content-center align-items-lg-center gap-3 gap-lg-5 flex-column-reverse flex-lg-row">
                             <li className="nav-item dropdown me-lg-4">
                                 <a className="nav-link dropdown-toggle text-22" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Category
+                                    Genres of Books
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {genres.map((genre, index) => (
-                                        <li key={index}>
-                                            <Link className="dropdown-item" to={`/genre/${genre}`}>{genre}</Link>
-                                        </li>
-                                    ))}
+                                    {genres.map((genre, index) => {
+                                        const isActive = location.pathname.includes(`/genre/${genre}`);
+                                        return (
+                                            <li key={index}>
+                                                <Link className={`dropdown-item ${isActive ? 'active-genre' : ''}`} to={`/genre/${genre}`}>
+                                                    {genre}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </li>
                             <form className="d-flex mt-3 mt-lg-0 ms-lg-4" role="search">
