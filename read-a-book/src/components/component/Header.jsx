@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // import { Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/image/logo.png';
-import logoIcon from '../../assets/image/logo-icon.png';
-import search from '../../assets/image/search.png';
+// import logo from '../../assets/image/logo.png';
+import logo from '../../assets/image/read-a-book.png';
+// import logoIcon from '../../assets/image/logo-icon.png';
+import logoIcon from '../../assets/image/read-a-book-icon.png';
+import searchIcon from '../../assets/image/searchIcon.png';
 
 export default function Header() {
 
@@ -69,10 +71,10 @@ export default function Header() {
                                     })}
                                 </ul>
                             </li> */}
-                        <form className="d-flex mt-3 mt-lg-0 ms-lg-4" role="search">
+                        <form className="form d-flex mt-3 mt-lg-0 ms-lg-4" role="search">
                             <input className="form-control search-bar" type="search" placeholder="Find your favorite book..." aria-label="Search" />
                             <button className="btn search-btn" type="submit">
-                                <img src={search} alt="Search icon" width="24" height="24" />
+                                <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="24" height="24" />
                             </button>
                         </form>
                         {/* </ul> */}
