@@ -3,8 +3,8 @@ import React from 'react';
 import '../assets/css/App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './component/Header';
-import Footer from './component/Footer';
+// import Header from './component/Header';
+// import Footer from './component/Footer';
 import Homepage from './component/pages/Homepage';
 // import Ruti from './Ruti';
 
@@ -12,10 +12,10 @@ export default function App() {
   return (
     <div className="App">
       {/* <BrowserRouter> */}
-      <Header />
+      {/* <Header /> */}
       {/* <Ruti /> */}
       <Homepage />
-      <Footer />
+      {/* <Footer /> */}
       {/* </BrowserRouter> */}
     </div>
   );
