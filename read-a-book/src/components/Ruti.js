@@ -7,10 +7,8 @@ export default function Ruti() {
     return (
         <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/genre/:genre" element={<Homepage />} />
+            {/* <Route path="/genre/:genre" element={<Homepage />} /> */}
             <Route path="*" element={<NotFound />} />
-            {/* <Route path="" element={""} />
-            <Route path="" element={""} /> */}
         </Routes>
     )
 }
