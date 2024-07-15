@@ -6,7 +6,18 @@ import logo from '../../assets/image/read-a-book.png';
 import logoIcon from '../../assets/image/read-a-book-icon.png';
 import searchIcon from '../../assets/image/searchIcon.png';
 
-export default function Header() {
+export default function Header({onSearch}) {
+
+    const [searchBook, setSearchBook] = useState('');
+
+    const handleSearchBook = (event) => {
+        setSearchBook(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSearch(searchBook);
+    };
 
     // const [genres, setGenres] = useState([]);
     // const location = useLocation();
@@ -71,8 +82,9 @@ export default function Header() {
                                     })}
                                 </ul>
                             </li> */}
-                        <form className="form d-flex mt-3 mt-lg-0 ms-lg-4" role="search">
-                            <input className="form-control search-bar" type="search" placeholder="Find your favorite book..." aria-label="Search" />
+                        <form className="form d-flex mt-3 mt-lg-0 ms-lg-4" role="search" onSubmit={handleSubmit}>
+                            <input className="form-control search-bar" type="search" placeholder="Find your favorite book..." aria-label="Search" value={searchBook}
+                                onChange={handleSearchBook} />
                             <button className="btn search-btn" type="submit">
                                 <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="24" height="24" />
                             </button>
