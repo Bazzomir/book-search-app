@@ -6,9 +6,10 @@ import logo from '../../assets/image/read-a-book.png';
 import logoIcon from '../../assets/image/read-a-book-icon.png';
 import searchIcon from '../../assets/image/searchIcon.png';
 
-export default function Header({onSearch}) {
+export default function Header({ onSearch }) {
 
     const [searchBook, setSearchBook] = useState('');
+    // const [menuOpen, setMenuOpen] = useState(false);
 
     const handleSearchBook = (event) => {
         setSearchBook(event.target.value);
@@ -18,6 +19,10 @@ export default function Header({onSearch}) {
         event.preventDefault();
         onSearch(searchBook);
     };
+
+    // const toggleMenu = () => {
+    //     setMenuOpen(!menuOpen);
+    // };
 
     // const [genres, setGenres] = useState([]);
     // const location = useLocation();
@@ -49,18 +54,14 @@ export default function Header({onSearch}) {
             <div className="container-fluid">
                 <div className="d-lg-none">
                     <img src={logoIcon} alt="Logo" className="d-inline-block navbar-brand__logo--icon" />
-                    {/* <Link className="navbar-brand" to="/">Home</Link> */}
                     <a className="navbar-brand" href="/">Home</a>
                 </div>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="d-flex w-100 justify-content-between px-1 px-md-3 px-lg-5 mb-0">
-                        {/* <Link className="navbar-brand d-none d-lg-block" to="/">
-                            <img src={logo} alt="Logo" className="d-inline-block navbar-brand__logo" />
-                        </Link> */}
                         <a className="navbar-brand d-none d-lg-block" href="/">
                             <img src={logo} alt="Logo" className="d-inline-block navbar-brand__logo" />
                         </a>
@@ -89,7 +90,6 @@ export default function Header({onSearch}) {
                                 <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="24" height="24" />
                             </button>
                         </form>
-                        {/* </ul> */}
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ body {
 .navbar {
     box-shadow: 0px 8px 5px 0px rgba(60, 48, 40, 0.3) !important;
     background-color: var(--brown);
-    --bs-navbar-toggler-icon-bg: none !important;
+    /* --bs-navbar-toggler-icon-bg: none !important; */
 }
 
 .navbar-brand {
@@ -49,15 +49,15 @@ body {
     box-shadow: none !important;
 }
 
-.nav-item {
-    list-style: none;
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(242, 240, 228)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.active-sort {
+/* .active-sort {
     background-color: var(--brown) !important;
     font-weight: bold !important;
     color: var(--white) !important;
-}
+} */
 
 /* .form-select {
     overflow: hidden !important;
@@ -91,7 +91,7 @@ body {
     color: var(--white) !important;
 }
 
-.form-select{
+.form-select {
     border-color: var(--brown) !important;
 }
 
