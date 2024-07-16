@@ -7,6 +7,7 @@ import Lottie from 'react-lottie';
 import noResultsFound from '../../../assets/image/noResultsFound.json';
 
 export default function Homepage() {
+    
     const [data, setData] = useState([]);
     const [sortOption, setSortOption] = useState('author');
     const [filteredData, setFilteredData] = useState([]);
@@ -41,9 +42,9 @@ export default function Homepage() {
     };
 
     const mergeData = (jsonData, csvData) => {
-        const csvDataById = csvData.reduce((acc, book) => {
-            acc[book.id] = book;
-            return acc;
+        const csvDataById = csvData.reduce((item, book) => {
+            item[book.id] = book;
+            return item;
         }, {});
 
         return jsonData.map(book => ({
