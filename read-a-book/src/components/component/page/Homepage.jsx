@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Papa from 'papaparse';
 import Card from '../Card';
 import Header from '../Header';
 import Footer from '../Footer';
+import Lottie from 'react-lottie';
+import noResultsFound from '../../../assets/image/animation/noResultsFound.json';
 
 export default function Homepage() {
+
     const [data, setData] = useState([]);
     const [sortOption, setSortOption] = useState('author');
     const [filteredData, setFilteredData] = useState([]);
@@ -39,9 +42,9 @@ export default function Homepage() {
     };
 
     const mergeData = (jsonData, csvData) => {
-        const csvDataById = csvData.reduce((acc, book) => {
-            acc[book.id] = book;
-            return acc;
+        const csvDataById = csvData.reduce((item, book) => {
+            item[book.id] = book;
+            return item;
         }, {});
 
         return jsonData.map(book => ({
@@ -50,16 +53,16 @@ export default function Homepage() {
         }));
     };
 
-    const getData = async () => {
+    const getData = useCallback(async () => {
         const [jsonData, csvData] = await Promise.all([getJsonData(), getCSVData()]);
         const mergedData = mergeData(jsonData, csvData);
         setData(mergedData);
         setFilteredData(mergedData);
-    };
+    }, []);
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [getData]);
 
     const handleSearch = (query) => {
         setSearchBook(query);
@@ -87,6 +90,15 @@ export default function Homepage() {
         return 0;
     });
 
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: noResultsFound,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
+
     return (
         <>
             <Header onSearch={handleSearch} />
@@ -106,7 +118,16 @@ export default function Homepage() {
                                     <Card key={index} book={book} searchBook={searchBook} />
                                 ))
                             ) : (
-                                <p>No results found</p>
+                                <div className="row justify-content-center align-items-center">
+                                    <Lottie
+                                        className="col-12"
+                                        options={defaultOptions}
+                                        height={400}
+                                        width={400}
+                                    />
+                                    <h1 className="col-12 text-center">SORRY!</h1>
+                                    <h2 className="col-12 text-center">No results found...</h2>
+                                </div>
                             )}
                         </div>
                     </div>
