@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Papa from 'papaparse';
 import Card from '../Card';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -9,7 +10,7 @@ export default function Homepage() {
     const [filteredData, setFilteredData] = useState([]);
     const [searchBook, setSearchBook] = useState('');
 
-    const getData = async () => {
+    const getJsonData = async () => {
         try {
             const response = await fetch('/books.json', {
                 headers: {
@@ -18,12 +19,42 @@ export default function Homepage() {
                 },
             });
 
-            const json = await response.json();
-            setData(json);
-            setFilteredData(json);
+            return await response.json();
+
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching JSON data:', error);
+            return [];
         }
+    };
+
+    const getCSVData = async () => {
+        try {
+            const response = await fetch('/books.csv');
+            const csvText = await response.text();
+            return Papa.parse(csvText, { header: true }).data;
+        } catch (error) {
+            console.error('Error fetching CSV data:', error);
+            return [];
+        }
+    };
+
+    const mergeData = (jsonData, csvData) => {
+        const csvDataById = csvData.reduce((acc, book) => {
+            acc[book.id] = book;
+            return acc;
+        }, {});
+
+        return jsonData.map(book => ({
+            ...book,
+            ...csvDataById[book.id],
+        }));
+    };
+
+    const getData = async () => {
+        const [jsonData, csvData] = await Promise.all([getJsonData(), getCSVData()]);
+        const mergedData = mergeData(jsonData, csvData);
+        setData(mergedData);
+        setFilteredData(mergedData);
     };
 
     useEffect(() => {
@@ -32,11 +63,11 @@ export default function Homepage() {
 
     const handleSearch = (query) => {
         setSearchBook(query);
-        const lowercasedQuery = query.toLowerCase();
+        const lowercased = query.toLowerCase();
         const filteredBooks = data.filter(book =>
-            book.title.toLowerCase().includes(lowercasedQuery) ||
-            book.author.toLowerCase().includes(lowercasedQuery) ||
-            book.genre.toLowerCase().includes(lowercasedQuery)
+            book.title.toLowerCase().includes(lowercased) ||
+            book.author.toLowerCase().includes(lowercased) ||
+            book.genre.toLowerCase().includes(lowercased)
         );
         setFilteredData(filteredBooks);
     };
@@ -59,7 +90,7 @@ export default function Homepage() {
     return (
         <>
             <Header onSearch={handleSearch} />
-            <div className="container">
+            <div className="container min-vh-100">
                 <div className="row py-5">
                     <div className="col-12 p-2">
                         <div className="d-flex justify-content-start mb-3">
