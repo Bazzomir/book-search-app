@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Papa from 'papaparse';
 import Card from '../Card';
 import Header from '../Header';
 import Footer from '../Footer';
 import Lottie from 'react-lottie';
-import noResultsFound from '../../../assets/image/noResultsFound.json';
+import noResultsFound from '../../../assets/image/animation/noResultsFound.json';
 
 export default function Homepage() {
-    
+
     const [data, setData] = useState([]);
     const [sortOption, setSortOption] = useState('author');
     const [filteredData, setFilteredData] = useState([]);
@@ -53,16 +53,16 @@ export default function Homepage() {
         }));
     };
 
-    const getData = async () => {
+    const getData = useCallback(async () => {
         const [jsonData, csvData] = await Promise.all([getJsonData(), getCSVData()]);
         const mergedData = mergeData(jsonData, csvData);
         setData(mergedData);
         setFilteredData(mergedData);
-    };
+    }, []);
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [getData]);
 
     const handleSearch = (query) => {
         setSearchBook(query);
