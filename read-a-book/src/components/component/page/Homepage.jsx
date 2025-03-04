@@ -101,7 +101,7 @@ export default function Homepage() {
 
     return (
         <>
-            <Header onSearch={handleSearch} />
+            <Header onSearch={handleSearch} data={data} />
             <div className="container min-vh-100">
                 <div className="row py-5">
                     <div className="col-12 p-2">

@@ -3,16 +3,45 @@ import logo from '../../assets/image/logo/logo.png';
 import logoIcon from '../../assets/image/logo/logo-small.png';
 import searchIcon from '../../assets/image/searchIcon.png';
 
-export default function Header({ onSearch }) {
+export default function Header({ onSearch, data }) {
 
     const [searchBook, setSearchBook] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
 
-    const handleSearchBook = (event) => {
-        setSearchBook(event.target.value);
+    const handleSearchBook = (e) => {
+        const input = e.target.value;
+        setSearchBook(input);
+        onSearch(input)
+
+        if (input.length > 0) {
+            const filteredSuggestions = data
+                .filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
+                .slice(0, 5);
+
+            setSuggestions(filteredSuggestions);
+        } else {
+            setSuggestions([]);
+        }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSuggestionClick = (title) => {
+        setSearchBook(title);
+        setSuggestions([]);
+        onSearch(title);
+    }
+
+    const highlightSuggestion = (title, query) => {
+        if (!query) return title;
+        return (
+            <>
+                <span className="text-info">{query}</span>
+                <span className="text-white">{title.slice(query.length)}</span>
+            </>
+        )
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         onSearch(searchBook);
     };
 
@@ -39,6 +68,18 @@ export default function Header({ onSearch }) {
                             <button className="btn search-btn" type="submit">
                                 <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="24" height="24" />
                             </button>
+
+                            {suggestions.length > 0 && (
+                                <ul className="dropdown-menu show">
+                                    {suggestions.map((book, index) => {
+                                        return (
+                                            <li key={index} className="dropdown-item" onClick={() => handleSuggestionClick(book.title)}>
+                                                {highlightSuggestion(book.title, searchBook)}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            )}
                         </form>
                     </div>
                 </div>
