@@ -65,11 +65,6 @@ body {
     background-color: #b66f394f !important;
 } */
 
-.suggestionText{
-    color: var(--white);
-    font-weight: bold;
-}
-
 .form {
     max-width: 50rem;
     width: 100%;
