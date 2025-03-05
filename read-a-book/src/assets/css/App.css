@@ -9,7 +9,7 @@ body {
     color: var(dark-brown) !important;
 }
 
-.shadow {
+.box-shadow {
     box-shadow: 7px 7px 10px -3px rgba(182, 111, 57, 0.75) !important;
 }
 
