@@ -108,7 +108,7 @@ export default function Homepage() {
                         <div className="d-flex justify-content-start mb-3">
                             <label>
                                 Filter:
-                                <select value={sortOption} onChange={handleSortChange} className="form-select w-auto card--shadow">
+                                <select value={sortOption} onChange={handleSortChange} className="form-select w-auto shadow">
                                     <option value="author">Sort by Author</option>
                                     <option value="title">Sort by Title</option>
                                     <option value="genre">Sort by Genre</option>
