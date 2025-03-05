@@ -1,4 +1,4 @@
-# Book Search Web Page ***
+# Book Search Web Page 
 
 A web app that lets users search for books by Title, Author, or Genre. It merges book data from JSON and CSV files and displays it in a sortable, searchable format. The default sorting is by Author's name. The app is responsive and user-friendly.
 
@@ -48,7 +48,7 @@ A web app that lets users search for books by Title, Author, or Genre. It merges
 
 3. Start the development server
    ```bash
-   npm run dev
+   npm start
    ```
 
 ## Usage
