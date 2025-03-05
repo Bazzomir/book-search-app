@@ -7,17 +7,18 @@ export default function Header({ onSearch, data }) {
 
     const [searchBook, setSearchBook] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleSearchBook = (e) => {
         const input = e.target.value;
         setSearchBook(input);
-        onSearch(input)
+        onSearch(input);
+        setActiveIndex(-1);
 
         if (input.length > 2) {
             const filteredSuggestions = data
                 .filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
                 .slice(0, 5);
-
             setSuggestions(filteredSuggestions);
         } else {
             setSuggestions([]);
@@ -28,6 +29,18 @@ export default function Header({ onSearch, data }) {
         setSearchBook(title);
         setSuggestions([]);
         onSearch(title);
+        setActiveIndex(-1);
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'ArrowDown') {
+            setActiveIndex((prevIndex) => (prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex));
+        } else if (e.key === 'ArrowUp') {
+            setActiveIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
+        } else if (e.key === 'Enter' && activeIndex >= 0) {
+            handleSuggestionClick(suggestions[activeIndex].title);
+            e.preventDefault();
+        }
     }
 
     const highlightSuggestion = (title, query) => {
@@ -64,7 +77,7 @@ export default function Header({ onSearch, data }) {
                         </a>
                         <form className="form d-flex mt-3 mt-lg-0 ms-lg-4" role="search" onSubmit={handleSubmit}>
                             <input className="form-control search-bar" type="search" placeholder="Find your favorite book..." aria-label="Search" value={searchBook}
-                                onChange={handleSearchBook} />
+                                onChange={handleSearchBook} onKeyDown={handleKeyDown} />
                             <button className="btn search-btn" type="submit">
                                 <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="30" height="30" />
                             </button>
@@ -73,7 +86,7 @@ export default function Header({ onSearch, data }) {
                                 <ul className="dropdown-menu show">
                                     {suggestions.map((book, index) => {
                                         return (
-                                            <li key={index} className="dropdown-item" onClick={() => handleSuggestionClick(book.title)}>
+                                            <li key={index} className={`dropdown-item ${index === activeIndex ? 'active' : ''}`} onClick={() => handleSuggestionClick(book.title)}>
                                                 {highlightSuggestion(book.title, searchBook)}
                                             </li>
                                         );
