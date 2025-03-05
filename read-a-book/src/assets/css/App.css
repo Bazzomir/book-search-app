@@ -73,6 +73,7 @@ body {
 
 .form-control {
     color: var(--white) !important;
+    font-size: 1.2rem !important;
 }
 
 .form-select {
@@ -93,7 +94,8 @@ body {
 }
 
 .search-bar::placeholder {
-    color: var(--white) !important;
+    color: #fff !important;
+    font-size: 1.1rem !important;
 }
 
 .search-bar:focus::-webkit-input-placeholder {
@@ -116,6 +118,8 @@ body {
 .search-btn__icon:active {
     transform: scale(1.5);
 }
+
+
 
 .card {
     width: 20rem !important;

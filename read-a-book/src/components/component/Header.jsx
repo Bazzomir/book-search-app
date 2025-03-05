@@ -13,7 +13,7 @@ export default function Header({ onSearch, data }) {
         setSearchBook(input);
         onSearch(input)
 
-        if (input.length > 0) {
+        if (input.length > 2) {
             const filteredSuggestions = data
                 .filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
                 .slice(0, 5);
