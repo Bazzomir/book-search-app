@@ -38,7 +38,7 @@ A web app that lets users search for books by Title, Author, or Genre. It merges
 1. Clone the repository
    ```bash
    git clone https://github.com/Bazzomir/book-search-app.git
-   cd random-password
+   cd book-search-app
    ```
 
 2. Install dependencies
