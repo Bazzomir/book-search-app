@@ -19,6 +19,6 @@ const highlightText = (text, query) => {
     const regex = new RegExp(`(${query})`, 'gi');
     const parts = text.split(regex);
     return parts.map((part, index) =>
-        part.toLowerCase() === query.toLowerCase() ? <span key={index} style={{ color: 'red', fontWeight: 'bold' }}>{part}</span> : part
+        part.toLowerCase() === query.toLowerCase() ? <span key={index} className="text-danger bold">{part}</span> : <span key={index}>{part}</span>
     );
 };
