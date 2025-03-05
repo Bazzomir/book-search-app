@@ -10,7 +10,7 @@ body {
 }
 
 .shadow {
-    box-shadow: 7px 7px 10px -3px rgba(182, 111, 57, 0.75)
+    box-shadow: 7px 7px 10px -3px rgba(182, 111, 57, 0.75) !important;
 }
 
 [type="search"]::-webkit-search-cancel-button {
