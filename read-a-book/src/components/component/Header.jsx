@@ -66,7 +66,7 @@ export default function Header({ onSearch, data }) {
                             <input className="form-control search-bar" type="search" placeholder="Find your favorite book..." aria-label="Search" value={searchBook}
                                 onChange={handleSearchBook} />
                             <button className="btn search-btn" type="submit">
-                                <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="24" height="24" />
+                                <img className="search-btn__icon" src={searchIcon} alt="Search icon" width="30" height="30" />
                             </button>
 
                             {suggestions.length > 0 && (
