@@ -1,19 +1,58 @@
-"Read A Book" - Project Instructions
+# Book Search Web Page ***
 
-1. Clone the Repository: Clone the repository to your local machine. For detailed instructions or troubleshooting, please refer to this https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository.
+A web app that lets users search for books by Title, Author, or Genre. It merges book data from JSON and CSV files and displays it in a sortable, searchable format. The default sorting is by Author's name. The app is responsive and user-friendly.
 
-2. Navigate to the Project Directory: After cloning, navigate to the "read-a-book" folder on your computer.
+### Features
 
-3. Install npm:
+- Search: 
+    - Users can enter a query, and JavaScript filters results dynamically.
 
-Open a terminal in the "read-a-book" directory.
-Install npm by executing the command: `npm install`.
+- Sorting:
+    - Dropdown to sort books by Title, Author (default), or Genre.
 
-4. Start the Project:
+- Responsive Design:
+    - Works on desktop and mobile.
 
-Run the command: `npm start`.
-If you encounter any errors, execute: `npm update` and then try `npm start` again.
+- Styling:
+    - Uses Bootstrap for a modern UI.
 
-Please ensure all steps are completed correctly.
+- No Results Handling: 
+    - Displays a 'No results found' message if no matches.
 
-https://medium.com/@hammadrao891/how-to-clone-a-react-application-from-github-and-run-4f9b742e568a
+- Highlighting Matches:
+    - Matching search terms appear bold and red.
+
+- Data Merging:
+    - Combines book data from books.json and books.csv via a unique id field.
+
+## Technologies Used
+
+- React 18+
+- JavaScript
+- Bootstrap
+- JSON
+- CSV
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Bazzomir/book-search-app.git
+   cd random-password
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+- Use the search bar to filter books.
+- Select sorting order from the dropdown.
+- Results update dynamically.
