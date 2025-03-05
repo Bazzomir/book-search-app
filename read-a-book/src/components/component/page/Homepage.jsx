@@ -106,11 +106,14 @@ export default function Homepage() {
                 <div className="row py-5">
                     <div className="col-12 p-2">
                         <div className="d-flex justify-content-start mb-3">
-                            <select value={sortOption} onChange={handleSortChange} className="form-select w-auto">
-                                <option value="author">Sort by Author</option>
-                                <option value="title">Sort by Title</option>
-                                <option value="genre">Sort by Genre</option>
-                            </select>
+                            <label>
+                                Filter:
+                                <select value={sortOption} onChange={handleSortChange} className="form-select w-auto">
+                                    <option value="author">Sort by Author</option>
+                                    <option value="title">Sort by Title</option>
+                                    <option value="genre">Sort by Genre</option>
+                                </select>
+                            </label>
                         </div>
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-around align-items-center gap-5 m-0 py-2">
                             {sortedData && sortedData.length > 0 ? (
