@@ -1,14 +1,18 @@
 {
   "name": "book-search-app",
   "version": "1.1.0",
-  "homepage": "https://readscape.vercel.app/", 
-  "author": "Bazzomir, 2025",
+  "author": {
+    "name": "Bazzomir",
+    "email": "bazzomir97@gmail.com",
+    "year": "2025"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+    "gh-pages": "^6.3.0",
     "papaparse": "^5.4.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
@@ -21,8 +25,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "redeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bazzomir/book-search-app"
+  },
+  "bugs": {
+    "url": "https://github.com/Bazzomir/book-search-app/issues"
+  },
+  "homepage": "https://bazzomir.github.io/book-search-app/",
   "eslintConfig": {
     "extends": [
       "react-app",
