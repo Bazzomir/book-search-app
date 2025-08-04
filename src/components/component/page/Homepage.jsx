@@ -15,7 +15,8 @@ export default function Homepage() {
 
     const getJsonData = async () => {
         try {
-            const response = await fetch('/books.json', {
+            // const response = await fetch('/books.json', {
+            const response = await fetch(`${process.env.PUBLIC_URL}/books.json`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
@@ -32,7 +33,8 @@ export default function Homepage() {
 
     const getCSVData = async () => {
         try {
-            const response = await fetch('/books.csv');
+            // const response = await fetch('/books.csv');
+            const response = await fetch(`${process.env.PUBLIC_URL}/books.csv`);
             const csvText = await response.text();
             return Papa.parse(csvText, { header: true }).data;
         } catch (error) {

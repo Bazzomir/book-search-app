@@ -7,6 +7,7 @@
     "year": "2025"
   },
   "private": true,
+  "homepage": "https://bazzomir.github.io/book-search-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -26,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "redeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "repository": {
@@ -36,7 +37,6 @@
   "bugs": {
     "url": "https://github.com/Bazzomir/book-search-app/issues"
   },
-  "homepage": "https://bazzomir.github.io/book-search-app/",
   "eslintConfig": {
     "extends": [
       "react-app",
